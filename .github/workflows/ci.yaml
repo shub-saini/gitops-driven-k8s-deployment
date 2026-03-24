@@ -2,13 +2,13 @@ name: Continuos Integration
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths-ignore:
-      - "kubernetes/**"
-      - "terraform-aws-old/**"
-      - "terraform-gcp/**"
-      - "*.md"
+  # push:
+  #   branches: [main]
+  #   paths-ignore:
+  #     - "kubernetes/**"
+  #     - "terraform-aws-old/**"
+  #     - "terraform-gcp/**"
+  #     - "*.md"
 
 permissions:
   contents: read
@@ -41,12 +41,12 @@ jobs:
     name: Docker build and push
     runs-on: ubuntu-latest
     env:
-      WORKLOAD_IDENTITY_PROVIDER: "projects/546165975872/locations/global/workloadIdentityPools/github-action-pool/providers/github-actions-oidc-provider"
-      SERVICE_ACCOUNT: "terraform-github-actions@project-621d5d68-15ca-433f-9a1.iam.gserviceaccount.com"
-      PROJECT_ID: "staging-60514"
-      AR_LOCATION: "us-central1"
-      AR_URL: "us-central1-docker.pkg.dev/staging-60514/stage-images"
-      IMAGE_NAME: "backend"
+      WORKLOAD_IDENTITY_PROVIDER: 'projects/546165975872/locations/global/workloadIdentityPools/github-action-pool/providers/github-actions-oidc-provider'
+      SERVICE_ACCOUNT: 'terraform-github-actions@project-621d5d68-15ca-433f-9a1.iam.gserviceaccount.com'
+      PROJECT_ID: 'staging-60514'
+      AR_LOCATION: 'us-central1'
+      AR_URL: 'us-central1-docker.pkg.dev/staging-60514/stage-images'
+      IMAGE_NAME: 'backend'
 
     steps:
       - name: Checkout code
@@ -59,7 +59,7 @@ jobs:
         id: auth
         uses: google-github-actions/auth@v2
         with:
-          token_format: "access_token"
+          token_format: 'access_token'
           project_id: ${{ env.PROJECT_ID }}
           workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ env.SERVICE_ACCOUNT }}
@@ -67,9 +67,9 @@ jobs:
       - name: Docker Auth
         uses: docker/login-action@v3
         with:
-          username: "oauth2accesstoken"
+          username: 'oauth2accesstoken'
           password: ${{ steps.auth.outputs.access_token }}
-          registry: "${{ env.AR_LOCATION }}-docker.pkg.dev"
+          registry: '${{ env.AR_LOCATION }}-docker.pkg.dev'
 
       - name: Extract metadata for Docker
         id: meta
@@ -95,11 +95,11 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: ${{ env.AR_URL }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
-          format: "table"
-          exit-code: "1"
+          format: 'table'
+          exit-code: '1'
           ignore-unfixed: true
-          vuln-type: "os,library"
-          severity: "CRITICAL"
+          vuln-type: 'os,library'
+          severity: 'CRITICAL'
 
       - name: Push Docker image
         uses: docker/build-push-action@v5
