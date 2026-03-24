@@ -17,7 +17,7 @@ app.use('/api', routes);
 app.use(errorHandler);
 
 app.get('/', (req, res) => {
-  res.status(200).send('Test endpoint for cicd');
+  res.status(200).send('Test endpoint for ci-cd');
 });
 
 app.get('/health', (req, res) => {
