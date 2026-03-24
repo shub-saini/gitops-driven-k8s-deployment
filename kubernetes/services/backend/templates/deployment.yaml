@@ -48,16 +48,16 @@ spec:
             httpGet:
               path: /ready
               port: {{ .Values.backend.deployment.containerPort }}
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 10
             timeoutSeconds: 5
-            failureThreshold: 3
+            failureThreshold: 6
             
           livenessProbe:
             httpGet:
               path: /health
               port: {{ .Values.backend.deployment.containerPort }}
-            initialDelaySeconds: 15
+            initialDelaySeconds: 30
             periodSeconds: 20
             timeoutSeconds: 5
             failureThreshold: 3

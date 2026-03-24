@@ -30,7 +30,7 @@ app.get('/health', (req, res) => {
 
 app.get('/ready', async (req, res) => {
   try {
-    await prisma.$connect();
+    await prisma.$queryRaw`SELECT 1`;
     res.status(200).json({ status: 'ready', database: 'connected' });
   } catch (error) {
     res.status(503).json({ status: 'not ready', database: 'disconnected' });
