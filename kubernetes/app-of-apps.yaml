@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/shub-saini/k8s-api-devops-deployment
+    repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
     targetRevision: main
     path: kubernetes/addons
   destination:
@@ -30,7 +30,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/shub-saini/k8s-api-devops-deployment
+    repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
     targetRevision: main
     path: kubernetes/cluster-config
   destination:
@@ -51,7 +51,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/shub-saini/k8s-api-devops-deployment
+    repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
     targetRevision: main
     path: kubernetes/services/apps
   destination:
