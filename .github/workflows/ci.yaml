@@ -43,7 +43,7 @@ jobs:
     env:
       WORKLOAD_IDENTITY_PROVIDER: 'projects/546165975872/locations/global/workloadIdentityPools/github-action-pool/providers/github-actions-oidc-provider'
       SERVICE_ACCOUNT: 'terraform-github-actions@project-621d5d68-15ca-433f-9a1.iam.gserviceaccount.com'
-      PROJECT_ID: 'staging-60514'
+      PROJECT_ID: 'staging-57076'
       AR_LOCATION: 'us-central1'
       AR_URL: 'us-central1-docker.pkg.dev/staging-60514/stage-images'
       IMAGE_NAME: 'backend'
