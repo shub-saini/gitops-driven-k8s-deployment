@@ -41,7 +41,7 @@ variable "apis" {
   ]
 }
 
-variable "container_registry_repository_id" {
+variable "container_registry_id" {
   description = "ID of the Artifact Registry repository"
   type        = string
   default     = "staging-images"
