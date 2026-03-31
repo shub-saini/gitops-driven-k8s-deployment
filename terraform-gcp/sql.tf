@@ -10,7 +10,7 @@ module "private_service_access" {
 }
 
 resource "random_password" "db_password" {
-  length = 32
+  length  = 32
   special = true
 }
 
@@ -24,12 +24,10 @@ module "pg" {
   database_version     = "POSTGRES_18"
   region               = var.region
 
-  # Sandbox machine — smallest
-  tier              = "db-custom-8-32768"
+  tier              = "db-perf-optimized-N-2"
   zone              = "${var.region}-b"
-  availability_type = "ZONAL" # flip to REGIONAL for production HA
+  availability_type = "ZONAL" 
 
-  # Maintenance
   maintenance_window_day          = 7
   maintenance_window_hour         = 3
   maintenance_window_update_track = "stable"
@@ -44,10 +42,10 @@ module "pg" {
 
   # Networking — public IP + private IP via PSA
   ip_configuration = {
-    ipv4_enabled       = true                                  # public IP on
-    private_network    = google_compute_network.vpc.self_link  # private IP via PSA
-    allocated_ip_range = null
-    ssl_mode           = "ENCRYPTED_ONLY"
+    ipv4_enabled        = true                                 # public IP on
+    private_network     = module.vpc.vpc_self_link
+    allocated_ip_range  = null
+    ssl_mode            = "ENCRYPTED_ONLY"
     authorized_networks = []
   }
 
@@ -63,15 +61,8 @@ module "pg" {
     retention_unit                 = null
   }
 
-  # No read replicas for sandbox
   read_replicas = []
 
-  # Database
-  db_name      = "postgres"
-  db_charset   = "UTF8"
-  db_collation = "en_US.UTF8"
-
-  # Users
   user_name            = "postgres"
   user_password        = random_password.db_password.result
   user_deletion_policy = "ABANDON"
@@ -80,6 +71,6 @@ module "pg" {
 }
 
 resource "google_secret_manager_secret_version" "db_connection_string" {
-  secret = google_secret_manager_secret.db_connection_string
+  secret      = google_secret_manager_secret.db_connection_string.name
   secret_data = "postgresql://postgres:${random_password.db_password.result}@127.0.0.1:5432/postgres"
 }

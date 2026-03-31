@@ -53,6 +53,6 @@ variable "vpc_name" {
 }
 
 variable "db_name" {
-  type = string
+  type    = string
   default = "staging-sandbox-db"
 }

@@ -68,7 +68,7 @@ output "repository_url" {
 
 output "repository_name" {
   value = module.gcr.repository_name
-}
+} 
 
 # =============== cloud sql ========================
 
@@ -87,12 +87,4 @@ output "public_ip_address" {
 
 output "private_ip_address" {
   value = module.pg.private_ip_address
-}
-
-output "db_name" {
-  value = module.pg.db_name
-}
-
-output "user_name" {
-  value = module.pg.user_name
 }
