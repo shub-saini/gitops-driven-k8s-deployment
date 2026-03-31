@@ -4,6 +4,7 @@ import { PrismaClient } from '../../generated/prisma/client';
 import { existsSync } from 'fs';
 
 const isProduction = process.env.NODE_ENV === 'production';
+console.log(isProduction)
 
 if (isProduction) {
   if (existsSync('.env')) {

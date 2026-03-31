@@ -18,6 +18,18 @@ resource "google_service_account_iam_member" "workload_identity_binding" {
   depends_on = [google_project_service.apis, module.gke]
 }
 
+resource "google_project_iam_member" "cloudsql_client_permission" {
+  project = local.project_id
+  role = "roles/cloudsql.client"
+  member  = "serviceAccount:${google_service_account.gke_external_secrets_sa.email}"  
+}
+
+resource "google_service_account_iam_member" "backend_workload_identity_binding" {
+  service_account_id = google_service_account.gke_external_secrets_sa.id
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "serviceAccount:${local.project_id}.svc.id.goog[default/db-client-sa]"
+}
+
 resource "google_secret_manager_secret" "db_connection_string" {
   project   = local.project_id
   secret_id = "db-connection-string"
