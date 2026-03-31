@@ -24,6 +24,12 @@ resource "google_project_iam_member" "cloudsql_client_permission" {
   member  = "serviceAccount:${google_service_account.gke_external_secrets_sa.email}"
 }
 
+# resource "google_project_iam_member" "viewer_permission" {
+#   project = local.project_id
+#   role = "roles/viewer"
+#   member  = "serviceAccount:${google_service_account.gke_external_secrets_sa.email}"
+# }
+
 resource "google_service_account_iam_member" "backend_workload_identity_binding" {
   service_account_id = google_service_account.gke_external_secrets_sa.id
   role               = "roles/iam.workloadIdentityUser"
