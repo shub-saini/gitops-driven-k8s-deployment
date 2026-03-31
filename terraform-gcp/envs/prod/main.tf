@@ -68,7 +68,7 @@ module "gke" {
   enable_network_policy    = true
   deletion_protection      = false
 
-  depends_on = [google_project.staging, google_project_service.apis]
+  depends_on = [google_project.project, google_project_service.apis]
 }
 
 resource "helm_release" "argocd" {

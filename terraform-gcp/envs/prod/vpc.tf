@@ -64,7 +64,7 @@ module "vpc" {
   ]
 
   depends_on = [
-    google_project_service.apis, google_project.staging
+    google_project_service.apis, google_project.project
   ]
 }
 
