@@ -26,7 +26,7 @@ module "pg" {
 
   tier              = "db-perf-optimized-N-2"
   zone              = "${var.region}-b"
-  availability_type = "ZONAL" 
+  availability_type = "ZONAL"
 
   maintenance_window_day          = 7
   maintenance_window_hour         = 3
@@ -42,7 +42,7 @@ module "pg" {
 
   # Networking — public IP + private IP via PSA
   ip_configuration = {
-    ipv4_enabled        = true                                 # public IP on
+    ipv4_enabled        = true # public IP on
     private_network     = module.vpc.vpc_self_link
     allocated_ip_range  = null
     ssl_mode            = "ENCRYPTED_ONLY"

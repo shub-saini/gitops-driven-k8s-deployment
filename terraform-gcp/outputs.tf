@@ -68,7 +68,7 @@ output "repository_url" {
 
 output "repository_name" {
   value = module.gcr.repository_name
-} 
+}
 
 # =============== cloud sql ========================
 

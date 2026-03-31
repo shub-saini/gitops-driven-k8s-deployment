@@ -20,8 +20,8 @@ resource "google_service_account_iam_member" "workload_identity_binding" {
 
 resource "google_project_iam_member" "cloudsql_client_permission" {
   project = local.project_id
-  role = "roles/cloudsql.client"
-  member  = "serviceAccount:${google_service_account.gke_external_secrets_sa.email}"  
+  role    = "roles/cloudsql.client"
+  member  = "serviceAccount:${google_service_account.gke_external_secrets_sa.email}"
 }
 
 resource "google_service_account_iam_member" "backend_workload_identity_binding" {
