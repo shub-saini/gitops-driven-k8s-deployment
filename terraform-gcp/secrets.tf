@@ -30,18 +30,6 @@ resource "google_secret_manager_secret" "db_connection_string" {
   depends_on = [google_project_service.apis]
 }
 
-resource "google_secret_manager_secret" "db_ca_certificate" {
-  project   = local.project_id
-  secret_id = "db-ca-cert"
-
-  replication {
-    auto {}
-  }
-  deletion_protection = false
-
-  depends_on = [google_project_service.apis]
-}
-
 resource "google_secret_manager_secret" "jwt_secret" {
   project   = local.project_id
   secret_id = "jwt-secret"

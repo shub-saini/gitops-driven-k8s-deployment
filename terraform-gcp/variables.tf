@@ -51,3 +51,8 @@ variable "vpc_name" {
   type    = string
   default = "staging-vpc"
 }
+
+variable "db_name" {
+  type = string
+  default = "staging-sandbox-db"
+}

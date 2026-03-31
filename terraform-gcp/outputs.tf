@@ -69,3 +69,30 @@ output "repository_url" {
 output "repository_name" {
   value = module.gcr.repository_name
 }
+
+# =============== cloud sql ========================
+
+output "instance_name" {
+  value = module.pg.instance_name
+}
+
+output "instance_connection_name" {
+  description = "project:region:instance — use with Cloud SQL Auth Proxy"
+  value       = module.pg.instance_connection_name
+}
+
+output "public_ip_address" {
+  value = module.pg.public_ip_address
+}
+
+output "private_ip_address" {
+  value = module.pg.private_ip_address
+}
+
+output "db_name" {
+  value = module.pg.db_name
+}
+
+output "user_name" {
+  value = module.pg.user_name
+}
