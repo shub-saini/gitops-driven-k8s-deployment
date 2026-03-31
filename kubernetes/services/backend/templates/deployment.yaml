@@ -63,7 +63,7 @@ spec:
           args:
             - "--structured-logs"
             - "--port=5432"
-            - "staging-4769:us-central1:staging-sandbox-db"
+            - "staging-4769:us-central1: staging-sandbox-db-0d850b1d"
           securityContext:
             runAsNonRoot: true
           resources:
