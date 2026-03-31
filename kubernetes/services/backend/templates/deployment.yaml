@@ -12,6 +12,11 @@ spec:
       labels:
         app: backend-api
     spec:
+      serviceAccountName: db-client-sa
+      initContainers:
+        - name: wait-for-proxy
+          image: busybox
+          command: ['sh', '-c', 'until nc -z 127.0.0.1 5432; do echo waiting for cloud-sql-proxy; sleep 2; done']
       containers:
         - name: backend
           image: "{{ .Values.backend.deployment.image.repository }}:{{ .Values.backend.deployment.image.tag }}"
