@@ -2,13 +2,13 @@ name: CI Staging
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches: [main]
-  #   paths-ignore:
-  #     - "kubernetes/**"
-  #     - "terraform-aws-old/**"
-  #     - "terraform-gcp/**"
-  #     - "*.md"
+  push:
+    branches: [main]
+    paths-ignore:
+      - "kubernetes/**"
+      - "terraform-aws-old/**"
+      - "terraform-gcp/**"
+      - "*.md"
 
 permissions:
   contents: read
