@@ -15,7 +15,7 @@ spec:
       serviceAccountName: db-client-sa
       containers:
         - name: backend
-          image: "{{ .Values.project.region }}-{{ .Values.backend.deployment.image.registry }}/{{ .Values.project.id }}/{{ .Values.backend.deployment.image.repoName }}:{{ .Values.backend.deployment.image.tag }}"
+          image: "{{ .Values.project.region }}-{{ .Values.backend.deployment.image.registry }}/{{ .Values.project.id }}/{{ .Values.backend.deployment.image.repoName }}/}}/{{ .Values.backend.deployment.image.name }}:{{ .Values.backend.deployment.image.tag }}"
           imagePullPolicy: {{ .Values.backend.deployment.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.backend.deployment.containerPort }}
