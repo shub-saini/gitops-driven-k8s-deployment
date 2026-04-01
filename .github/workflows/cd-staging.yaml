@@ -37,6 +37,6 @@ jobs:
         env:
           NEW_IMAGE_TAG: sha-${{ github.event.workflow_run.head_sha }}
         run: |
-          git add kubernetes/services/backend/values.yaml
+          git add kubernetes/services/backend/values-staging.yaml
           git commit -m "Update Kubernetes deployment with new image tag: ${NEW_IMAGE_TAG} [skip ci]" || echo "No changes to commit"
           git push
