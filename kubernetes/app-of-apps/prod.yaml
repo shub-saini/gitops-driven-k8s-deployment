@@ -7,10 +7,13 @@ metadata:
     argocd.argoproj.io/sync-wave: '1'
 spec:
   project: default
-  source:
-    repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
-    targetRevision: main
-    path: kubernetes/addons
+  sources:
+    - repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
+      targetRevision: main
+      path: kubernetes/addons/base
+    - repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
+      targetRevision: main
+      path: kubernetes/addons/prod
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
@@ -29,10 +32,13 @@ metadata:
     argocd.argoproj.io/sync-wave: '2'
 spec:
   project: default
-  source:
-    repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
-    targetRevision: main
-    path: kubernetes/cluster-config
+  sources:
+    - repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
+      targetRevision: main
+      path: kubernetes/cluster-config/base
+    - repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
+      targetRevision: main
+      path: kubernetes/cluster-config/prod
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
@@ -53,7 +59,7 @@ spec:
   source:
     repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
     targetRevision: main
-    path: kubernetes/services/apps
+    path: kubernetes/services/apps/prod
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:

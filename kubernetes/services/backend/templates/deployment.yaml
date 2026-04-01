@@ -15,7 +15,7 @@ spec:
       serviceAccountName: db-client-sa
       containers:
         - name: backend
-          image: "{{ .Values.backend.deployment.image.repository }}:{{ .Values.backend.deployment.image.tag }}"
+          image: "{{ .Values.project.region }}-{{ .Values.backend.deployment.image.registry }}/{{ .Values.project.id }}/{{ .Values.backend.deployment.image.repoName }}:{{ .Values.backend.deployment.image.tag }}"
           imagePullPolicy: {{ .Values.backend.deployment.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.backend.deployment.containerPort }}
@@ -63,7 +63,7 @@ spec:
           args:
             - "--structured-logs"
             - "--port=5432"
-            - "staging-4769:us-central1:staging-sandbox-db-0d850b1d"
+            - "{{ .Values.project.id }}:{{ .Values.project.region }}:{{ .Values.project.db_name }}"
           securityContext:
             runAsNonRoot: true
           resources:
