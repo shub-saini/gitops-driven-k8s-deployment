@@ -1,4 +1,4 @@
-name: Continous Deployment
+name: CD Prod
 
 on:
   workflow_run:

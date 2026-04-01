@@ -1,4 +1,4 @@
-name: Continuos Integration
+name: CI Prod
 
 on:
   workflow_dispatch:
