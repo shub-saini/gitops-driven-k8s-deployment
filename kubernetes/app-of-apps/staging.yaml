@@ -1,0 +1,68 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: addons
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '1'
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
+      targetRevision: main
+      path: kubernetes/addons/base
+    - repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
+      targetRevision: main
+      path: kubernetes/addons/staging
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-config
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '2'
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
+      targetRevision: main
+      path: kubernetes/cluster-config/base
+    - repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
+      targetRevision: main
+      path: kubernetes/cluster-config/staging
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: services
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '3'
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
+    targetRevision: main
+    path: kubernetes/services/apps/staging
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

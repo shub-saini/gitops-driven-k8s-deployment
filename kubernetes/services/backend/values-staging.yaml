@@ -1,6 +1,6 @@
 project:
-  id: prod-19896
-  db_name: prod-db-f128b6a0
+  id: staging-48507
+  db_name: staging-db-e98f9236
   region: us-central1
 
 backend:
@@ -8,7 +8,7 @@ backend:
     replicaCount: 2
     image:
       registry: docker.pkg.dev
-      repoName: prod-apis
+      repoName: staging-apis
       name: backend
       # repository: us-central1-docker.pkg.dev/prod-19896/prod-apis/backend
       tag: sha-90cc3009204ee63cbde2e7e827a538afa4295c82
