@@ -2,7 +2,7 @@ name: CD Staging
 
 on:
   workflow_run:
-    workflows: ["Continuos Integration"]
+    workflows: ["CI Staging"]
     types:
       - completed
 

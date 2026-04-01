@@ -2,7 +2,7 @@ name: CD Prod
 
 on:
   workflow_run:
-    workflows: ["Continuos Integration"]
+    workflows: ["CI Prod"]
     types:
       - completed
 
