@@ -27,16 +27,16 @@ jobs:
           NEW_IMAGE_TAG: sha-${{ github.event.workflow_run.head_sha }}
         run: |
           # Update the values.yaml file directly
-          sed -i "s|tag:.*|tag: ${NEW_IMAGE_TAG}|g" kubernetes/services/backend/values-staging.yaml
+          sed -i "s|tag:.*|tag: ${NEW_IMAGE_TAG}|g" kubernetes/services/backend/values.yaml
 
           # Verify the change
           echo "Updated deployment to use image: ${NEW_IMAGE_TAG}"
-          grep "tag:" kubernetes/services/backend/values-staging.yaml
+          grep "tag:" kubernetes/services/backend/values.yaml
 
       - name: Commit and push changes
         env:
           NEW_IMAGE_TAG: sha-${{ github.event.workflow_run.head_sha }}
         run: |
-          git add kubernetes/services/backend/values-staging.yaml
-          git commit -m "Update Kubernetes staging deployment with new image tag: ${NEW_IMAGE_TAG} [skip ci]" || echo "No changes to commit"
+          git add kubernetes/services/backend/values.yaml
+          git commit -m "Update Kubernetes prod deployment with new image tag: ${NEW_IMAGE_TAG} [skip ci]" || echo "No changes to commit"
           git push
