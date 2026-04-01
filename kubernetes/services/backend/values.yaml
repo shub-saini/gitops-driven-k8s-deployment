@@ -11,7 +11,7 @@ backend:
       repoName: prod-apis
       name: backend
       # repository: us-central1-docker.pkg.dev/prod-19896/prod-apis/backend
-      tag: sha-daa4b875ee5fd0f5f1e250793ebea58be1101cf6
+      tag: sha-80b1788754b7b5cddc800512d4e2cc3542a401d3
       pullPolicy: IfNotPresent
     containerPort: 3000
 
