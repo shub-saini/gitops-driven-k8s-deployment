@@ -1,7 +1,7 @@
 region             = "us-central1"
 zone               = "us-central1-f"
-environment        = "dev"
-project_name       = "dev"
+environment        = "development"
+project_name       = "development"
 org_id             = "709498044594"
 billing_account_id = "01B75F-9B21A3-655BD2"
 apis = [
@@ -19,8 +19,8 @@ apis = [
   "cloudresourcemanager.googleapis.com"
 ]
 
-container_registry_repository_id = "dev-apis"
-vpc_name                         = "dev-vpc"
-db_name                          = "dev-db"
+container_registry_repository_id = "developmentelopment-apis"
+vpc_name                         = "development-vpc"
+db_name                          = "development-db"
 
-gke_name = "dev-gke"
+gke_name = "development-gke"
