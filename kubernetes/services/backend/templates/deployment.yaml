@@ -69,7 +69,7 @@ spec:
             - "{{ .Values.project.id }}:{{ .Values.project.region }}:{{ .Values.project.db_name }}"
           readinessProbe:
             httpGet:
-              path: /readyz
+              path: /readiness
               port: 9090
             initialDelaySeconds: 10
             periodSeconds: 5
