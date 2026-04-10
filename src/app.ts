@@ -9,6 +9,8 @@ import prisma from './config/prisma';
 
 const PORT = process.env.PORT || 3000;
 const app = express();
+const collectDefaultMetrics = client.collectDefaultMetrics
+collectDefaultMetrics()
 
 app.use(express.json());
 app.use(cookieParser());
@@ -39,9 +41,10 @@ app.get('/ready', async (req, res) => {
 });
 
 app.get('/metrics', async (req, res) => {
-  const metrics = await client.register.metrics();
+  // const metrics = await client.register.metrics();
   res.set('Content-Type', client.register.contentType);
-  res.send(metrics);
+  // res.send(metrics);
+  res.end(await client.register.metrics())
 });
 
 app.listen(PORT, () => {
