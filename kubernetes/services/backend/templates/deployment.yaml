@@ -64,6 +64,12 @@ spec:
             - "--structured-logs"
             - "--port=5432"
             - "{{ .Values.project.id }}:{{ .Values.project.region }}:{{ .Values.project.db_name }}"
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 9090
+            initialDelaySeconds: 10
+            periodSeconds: 5
           securityContext:
             runAsNonRoot: true
           resources:
