@@ -1,6 +1,6 @@
 project:
-  id: prod-19896
-  db_name: prod-db-f128b6a0
+  id: development-43813
+  db_name: dev-db-b5e1deca
   region: us-central1
 
 backend:
@@ -8,7 +8,7 @@ backend:
     replicaCount: 2
     image:
       registry: docker.pkg.dev
-      repoName: prod-apis
+      repoName: dev-apis
       name: backend
       # repository: us-central1-docker.pkg.dev/prod-19896/prod-apis/backend
       tag: sha-80b1788754b7b5cddc800512d4e2cc3542a401d3

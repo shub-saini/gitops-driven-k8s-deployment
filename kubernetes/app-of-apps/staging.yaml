@@ -10,9 +10,6 @@ spec:
   sources:
     - repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
       targetRevision: main
-      path: kubernetes/addons/base
-    - repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
-      targetRevision: main
       path: kubernetes/addons/staging
   destination:
     server: https://kubernetes.default.svc
@@ -33,9 +30,6 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
-      targetRevision: main
-      path: kubernetes/cluster-config/base
     - repoURL: https://github.com/shub-saini/gitops-driven-k8s-deployment
       targetRevision: main
       path: kubernetes/cluster-config/staging

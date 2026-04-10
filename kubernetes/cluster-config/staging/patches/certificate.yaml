@@ -15,12 +15,12 @@ metadata:
 spec:
   dnsNames:
     - 'argo-staging.vyntix.tech'
-# ---
-# apiVersion: cert-manager.io/v1
-# kind: Certificate
-# metadata:
-#   name: grafana-tls-certificate
-#   namespace: monitoring
-# spec:
-#   dnsNames:
-#     - 'grafana-staging.vyntix.tech'
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: grafana-tls-certificate
+  namespace: monitoring
+spec:
+  dnsNames:
+    - 'grafana-staging.vyntix.tech'
