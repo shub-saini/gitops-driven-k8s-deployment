@@ -1,0 +1,65 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend-ingress
+  namespace: default
+spec:
+  tls:
+    - hosts:
+        - backend.vyntix.tech
+      secretName: backend-cert-secret
+  rules:
+    - host: backend.vyntix.tech
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-ingress
+  namespace: argocd
+spec:
+  tls:
+    - hosts:
+        - argo.vyntix.tech
+      secretName: argo-cert-secret
+  rules:
+    - host: argo.vyntix.tech
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana-ingress
+  namespace: monitoring
+spec:
+  tls:
+    - hosts:
+        - grafana.vyntix.tech
+      secretName: grafana-cert-secret
+  rules:
+    - host: grafana.vyntix.tech
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kube-prometheus-stack-grafana
+                port:
+                  number: 80

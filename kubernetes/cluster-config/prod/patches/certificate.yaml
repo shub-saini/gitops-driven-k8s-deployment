@@ -4,13 +4,8 @@ metadata:
   name: backend-tls-certificate
   namespace: default
 spec:
-  secretName: backend-cert-secret
-  issuerRef:
-    name: letsencrypt-ci
-    kind: ClusterIssuer
   dnsNames:
     - 'backend.vyntix.tech'
-
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -18,13 +13,8 @@ metadata:
   name: argocd-tls-certificate
   namespace: argocd
 spec:
-  secretName: argo-cert-secret
-  issuerRef:
-    name: letsencrypt-ci
-    kind: ClusterIssuer
   dnsNames:
     - 'argo.vyntix.tech'
-
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -32,9 +22,5 @@ metadata:
   name: grafana-tls-certificate
   namespace: monitoring
 spec:
-  secretName: grafana-cert-secret
-  issuerRef:
-    name: letsencrypt-ci
-    kind: ClusterIssuer
   dnsNames:
     - 'grafana.vyntix.tech'

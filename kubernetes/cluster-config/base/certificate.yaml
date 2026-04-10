@@ -9,7 +9,7 @@ spec:
     name: letsencrypt-ci
     kind: ClusterIssuer
   dnsNames:
-    - 'backend-staging.vyntix.tech'
+    - PLACEHOLDER
 
 ---
 apiVersion: cert-manager.io/v1
@@ -23,7 +23,7 @@ spec:
     name: letsencrypt-ci
     kind: ClusterIssuer
   dnsNames:
-    - 'argo-staging.vyntix.tech'
+    - PLACEHOLDER
 
 ---
 apiVersion: cert-manager.io/v1
@@ -37,4 +37,4 @@ spec:
     name: letsencrypt-ci
     kind: ClusterIssuer
   dnsNames:
-    - 'grafana-staging.vyntix.tech'
+    - PLACEHOLDER

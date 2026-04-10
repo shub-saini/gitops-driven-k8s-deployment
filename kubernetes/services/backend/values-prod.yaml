@@ -1,0 +1,52 @@
+project:
+  id: prod-19896
+  db_name: prod-db-f128b6a0
+  region: us-central1
+
+backend:
+  deployment:
+    replicaCount: 2
+    image:
+      registry: docker.pkg.dev
+      repoName: prod-apis
+      name: backend
+      # repository: us-central1-docker.pkg.dev/prod-19896/prod-apis/backend
+      tag: sha-80b1788754b7b5cddc800512d4e2cc3542a401d3
+      pullPolicy: IfNotPresent
+    containerPort: 3000
+
+    env:
+      NODE_ENV: production
+    resources:
+      requests:
+        cpu: '100m'
+        memory: '128Mi'
+      limits:
+        cpu: '500m'
+        memory: '512Mi'
+
+  service:
+    type: ClusterIP
+    port: 80
+    targetPort: 3000
+
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70
+    targetMemoryUtilizationPercentage: 80
+
+    # Scale down behavior (conservative to avoid flapping)
+    scaleDown:
+      stabilizationWindowSeconds: 60 # Wait 1 minutes before scaling down
+      percentValue: 50 # Max 50% of pods can be removed
+      podsValue: 2 # Or max 2 pods can be removed
+      periodSeconds: 60
+
+    # Scale up behavior (aggressive for quick response)
+    scaleUp:
+      stabilizationWindowSeconds: 0 # Scale up immediately
+      percentValue: 100 # Can double pods
+      podsValue: 4 # Or add up to 4 pods
+      periodSeconds: 60

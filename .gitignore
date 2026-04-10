@@ -50,5 +50,3 @@ ca.pem
 cert/
 
 future.md
-
-**/prometheus-grafana.yaml
