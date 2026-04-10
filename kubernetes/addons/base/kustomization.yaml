@@ -2,6 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - cert-manager.yaml
-  # - prometheus-grafana.yaml
+  - prometheus-grafana.yaml
   - traefik-ingress.yaml
   - external-secrets.yaml
