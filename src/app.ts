@@ -19,7 +19,7 @@ app.use('/api', routes);
 app.use(errorHandler);
 
 app.get('/', (req, res) => {
-  res.status(200).send('Test endpoint for ci-cd');
+  res.status(200).send('Test endpoint from classroom');
 });
 
 app.get('/health', (req, res) => {
