@@ -65,7 +65,7 @@ spec:
             - "--port=5432"
             - "--health-check"
             - "--http-port=9090"
-            - "--http-address=0.0.0.0"  # binds to all interfaces
+            - "--http-address=0.0.0.0" 
             - "{{ .Values.project.id }}:{{ .Values.project.region }}:{{ .Values.project.db_name }}"
           readinessProbe:
             httpGet:
