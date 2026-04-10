@@ -11,7 +11,7 @@ backend:
       repoName: staging-apis
       name: backend
       # repository: us-central1-docker.pkg.dev/prod-19896/prod-apis/backend
-      tag: sha-6e03365d2b1f80ebd0cc013542e7628258ca8015
+      tag: sha-42aa715a776e47796d9181b6b34fee82709e5a5f
       pullPolicy: IfNotPresent
     containerPort: 3000
 
