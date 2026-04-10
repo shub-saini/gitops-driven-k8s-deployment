@@ -63,6 +63,9 @@ spec:
           args:
             - "--structured-logs"
             - "--port=5432"
+            - "--health-check"
+            - "--http-port=9090"
+            - "--http-address=0.0.0.0"  # binds to all interfaces
             - "{{ .Values.project.id }}:{{ .Values.project.region }}:{{ .Values.project.db_name }}"
           readinessProbe:
             httpGet:
