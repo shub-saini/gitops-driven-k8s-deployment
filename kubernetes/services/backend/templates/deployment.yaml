@@ -44,19 +44,19 @@ spec:
             httpGet:
               path: /ready
               port: {{ .Values.backend.deployment.containerPort }}
-            initialDelaySeconds: 20
+            initialDelaySeconds: 50
             periodSeconds: 10
             timeoutSeconds: 5
-            failureThreshold: 10
+            failureThreshold: 15
             
           livenessProbe:
             httpGet:
               path: /health
               port: {{ .Values.backend.deployment.containerPort }}
-            initialDelaySeconds: 30
+            initialDelaySeconds: 20
             periodSeconds: 20
             timeoutSeconds: 5
-            failureThreshold: 3
+            failureThreshold: 10
         
         - name: cloud-sql-proxy
           image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.14.1
@@ -73,7 +73,7 @@ spec:
               port: 9090
             initialDelaySeconds: 5
             periodSeconds: 5
-            failureThreshold: 30
+            failureThreshold: 60
           readinessProbe:
             httpGet:
               path: /readiness
