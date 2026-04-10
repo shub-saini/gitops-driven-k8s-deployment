@@ -34,14 +34,14 @@ backend:
     enabled: true
     minReplicas: 2
     maxReplicas: 10
-    targetCPUUtilizationPercentage: 70
+    targetCPUUtilizationPercentage: 60
     targetMemoryUtilizationPercentage: 80
 
     # Scale down behavior (conservative to avoid flapping)
     scaleDown:
-      stabilizationWindowSeconds: 60 # Wait 1 minutes before scaling down
+      stabilizationWindowSeconds: 300 # Wait 1 minutes before scaling down
       percentValue: 50 # Max 50% of pods can be removed
-      podsValue: 2 # Or max 2 pods can be removed
+      podsValue: 1 # Or max 2 pods can be removed
       periodSeconds: 60
 
     # Scale up behavior (aggressive for quick response)
@@ -49,4 +49,4 @@ backend:
       stabilizationWindowSeconds: 0 # Scale up immediately
       percentValue: 100 # Can double pods
       podsValue: 4 # Or add up to 4 pods
-      periodSeconds: 60
+      periodSeconds: 15
