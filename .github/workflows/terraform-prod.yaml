@@ -9,7 +9,7 @@ permissions:
 
 env:
   TF_VERSION: '1.14'
-  WORKLOAD_IDENTITY_PROVIDER: 'projects/657813507152/locations/global/workloadIdentityPools/github-action-pool/providers/github-actions-oidc-provider'
+  WORKLOAD_IDENTITY_PROVIDER: 'projects/657813507152/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-oidc-provider'
   SERVICE_ACCOUNT: 'terraform-github-actions@project-6c48ff12-04c9-4b9b-8c3.iam.gserviceaccount.com'
   TF_WORKING_DIR: './terraform-gcp/envs/prod'
 
