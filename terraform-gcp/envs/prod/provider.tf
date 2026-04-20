@@ -9,7 +9,7 @@ terraform {
   }
 
   backend "gcs" {
-    bucket = "terraform-staging-state-bucket789" // change this manually after bucket creation
+    bucket = "terraform-state-1776669133" // change this manually after bucket creation
     prefix = "envs/production"
   }
 }

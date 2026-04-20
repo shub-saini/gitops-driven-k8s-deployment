@@ -2,8 +2,8 @@ region             = "us-central1"
 zone               = "us-central1-f"
 environment        = "prod"
 project_name       = "prod"
-org_id             = "709498044594"
-billing_account_id = "01B75F-9B21A3-655BD2"
+org_id             = "125849219145"
+billing_account_id = "01AC01-100D1F-A68521"
 apis = [
   "compute.googleapis.com",
   "container.googleapis.com",
