@@ -33,6 +33,14 @@ resource "google_project_iam_member" "node_pool_metadata" {
   member  = "serviceAccount:${each.value.email}"
 }
 
+resource "google_project_iam_member" "defaultNodeServiceAccount" {
+  for_each = google_service_account.node_pool_sa
+
+  project = var.project_id
+  role    = "container.defaultNodeServiceAccount"
+  member  = "serviceAccount:${each.value.email}"
+}
+
 resource "google_container_cluster" "primary" {
   name     = var.name
   project  = var.project_id
