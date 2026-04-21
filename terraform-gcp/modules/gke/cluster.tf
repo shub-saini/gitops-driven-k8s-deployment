@@ -37,7 +37,7 @@ resource "google_project_iam_member" "defaultNodeServiceAccount" {
   for_each = google_service_account.node_pool_sa
 
   project = var.project_id
-  role    = "container.defaultNodeServiceAccount"
+  role    = "roles/container.defaultNodeServiceAccount"
   member  = "serviceAccount:${each.value.email}"
 }
 
