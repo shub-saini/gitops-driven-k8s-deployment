@@ -1,6 +1,6 @@
 project:
-  id: prod-12385
-  db_name: prod-db-12fb8386
+  id: prod-64465
+  db_name: prod-db-d4ff5714
   region: us-central1
 
 backend:

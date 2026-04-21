@@ -41,11 +41,11 @@ jobs:
     name: Docker build and push
     runs-on: ubuntu-latest
     env:
-      WORKLOAD_IDENTITY_PROVIDER: 'projects/546165975872/locations/global/workloadIdentityPools/github-action-pool/providers/github-actions-oidc-provider'
-      SERVICE_ACCOUNT: 'terraform-github-actions@project-621d5d68-15ca-433f-9a1.iam.gserviceaccount.com'
-      PROJECT_ID: 'prod-12385'
+      WORKLOAD_IDENTITY_PROVIDER: 'projects/657813507152/locations/global/workloadIdentityPools/github-action-pool/providers/github-actions-oidc-provider'
+      SERVICE_ACCOUNT: 'terraform-github-actions@project-6c48ff12-04c9-4b9b-8c3.iam.gserviceaccount.com'
+      PROJECT_ID: 'prod-64465'
       AR_LOCATION: 'us-central1'
-      AR_URL: 'us-central1-docker.pkg.dev/prod-12385/prod-apis'
+      AR_URL: 'us-central1-docker.pkg.dev/prod-64465/prod-apis'
       IMAGE_NAME: 'backend'
 
     steps:
