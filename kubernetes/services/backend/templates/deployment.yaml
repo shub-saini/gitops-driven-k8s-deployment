@@ -13,6 +13,7 @@ spec:
         app: backend-api
     spec:
       serviceAccountName: db-client-sa
+      terminationGracePeriodSeconds: 60
       containers:
         - name: backend
           image: "{{ .Values.project.region }}-{{ .Values.backend.deployment.image.registry }}/{{ .Values.project.id }}/{{ .Values.backend.deployment.image.repoName }}/{{ .Values.backend.deployment.image.name }}:{{ .Values.backend.deployment.image.tag }}"
