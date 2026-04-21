@@ -44,7 +44,7 @@ spec:
             httpGet:
               path: /ready
               port: {{ .Values.backend.deployment.containerPort }}
-            initialDelaySeconds: 50
+            initialDelaySeconds: 90
             periodSeconds: 10
             timeoutSeconds: 5
             failureThreshold: 15
