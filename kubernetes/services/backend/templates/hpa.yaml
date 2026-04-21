@@ -28,16 +28,16 @@ spec:
           averageUtilization: {{ .Values.backend.autoscaling.targetMemoryUtilizationPercentage }}
     {{- end }}
   behavior:
-    scaleDown:
-      stabilizationWindowSeconds: {{ .Values.backend.autoscaling.scaleDown.stabilizationWindowSeconds }}
-      policies:
-        - type: Percent
-          value: {{ .Values.backend.autoscaling.scaleDown.percentValue }}
-          periodSeconds: {{ .Values.backend.autoscaling.scaleDown.periodSeconds }}
-        - type: Pods
-          value: {{ .Values.backend.autoscaling.scaleDown.podsValue }}
-          periodSeconds: {{ .Values.backend.autoscaling.scaleDown.periodSeconds }}
-      selectPolicy: Min
+    # scaleDown:
+    #   stabilizationWindowSeconds: {{ .Values.backend.autoscaling.scaleDown.stabilizationWindowSeconds }}
+    #   policies:
+    #     - type: Percent
+    #       value: {{ .Values.backend.autoscaling.scaleDown.percentValue }}
+    #       periodSeconds: {{ .Values.backend.autoscaling.scaleDown.periodSeconds }}
+    #     - type: Pods
+    #       value: {{ .Values.backend.autoscaling.scaleDown.podsValue }}
+    #       periodSeconds: {{ .Values.backend.autoscaling.scaleDown.periodSeconds }}
+    #   selectPolicy: Min
     scaleUp:
       stabilizationWindowSeconds: {{ .Values.backend.autoscaling.scaleUp.stabilizationWindowSeconds }}
       policies:
